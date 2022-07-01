@@ -1,0 +1,101 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "FasNote API",
+    "description" : "Fast, Advanced, Secure Content Management System API",
+    "contact" : {
+      "name" : "Hasan Ismail",
+      "email" : "hasanqqsp.dev@gmail.com"
+    },
+    "version" : "0.1.0",
+  },
+  "externalDocs" :{
+    "description" : "GitHub Hasan Ismail",
+    "url":"https://github.com/hasanqqsp"
+  },
+  "servers" : [
+    {
+      "url" : "https://{env}.api.fasnote.my.id/",
+      "description": "FasNote RESTFul API",
+      "variables" : {
+        "env" : {
+          "default" : "dev.v1",
+          "enum" : ["dev.v1","v1"]
+        }
+      }
+    }
+  ],
+  "paths" : {
+    "/authentications" : {
+      "post" : {
+        "summary" : "Get Access and Refresh Token for Authentication (Login)"
+      },
+      "put" : {
+        "summary" : "Update Access token with saved refresh token"
+      },
+      "delete" : {
+        "summary" : "Invalidate Refresh Token and Access Token (Logout)"
+      }
+    },
+    "/documents" : {
+      "get" : {
+        "summary" : "Get All Documents owned by authorized user",
+        "description" : "Will return list of object with documentId, lastUpdate, title and checksum property. Sorting and limit is supported"
+      },
+      "post" : {
+        "summary" : "Save one or more documents to database",
+        "description" : "Receive Array of Full Document Objects with title(required), body(required), attachments and path properties. Return Array of Document objects with "
+      }
+    },
+    "/documents/{documentId}" : {
+      "get" : {
+        "summary" : "Get Specific Document by Id",
+        "description" : "Return Array of Full Documents Objects"
+    
+      },
+      "put" : {
+        "summary" : "Edit Specific Document by Id",
+        "description" : "Recieve Full Document Object"
+      },
+      "delete" : {}
+    },
+    "/documents/{documentId}/attachments" : {
+      "get" : {},
+      "post" : {}
+    },
+    "/documents/{documentId}/attachments/{attachmentId}" : {
+      "get" : {},
+      "put" : {},
+      "delete" : {}
+    },
+    "/documents/{documentId}/snapshots" : {
+      "get" : {},
+      "post" : {}
+    },
+    "/documents/{documentId}/snapshots/latest" : {
+      "get" : {},
+      "put" : {}
+    },
+    "/documents/{documentId}/snapshots/{snapshotId}" : {
+      "get" : {},
+      "put" : {},
+      "delete" : {}
+    },
+    "/documents/{documentId}/collaborators" : {
+      "get" : {},
+      "post" : {},
+    },
+    "/documents/{documentId}/collaborators/{collaboratorId}" : {
+      "delete" : {}
+    },
+    "/folders/{path}": {
+      "get" : {},
+      "post" : {},
+      "put" : {},
+      "delete": {}
+    }
+    
+
+  }
+  
+}
